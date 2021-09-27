@@ -1,0 +1,30 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor Player
+actor CardController
+actor UserController
+actor LobbyController
+actor GameController
+rectangle System_MCTG {
+  Player -- (Login)
+  Player --(ChooseCardPack)
+  Player -- (JoinGame)
+  Player -- (MakeMove)
+  (MakeMove) -- GameController
+  (ChooseCardPack) -- CardController
+  (Login) -- UserController
+  (JoinGame) -- LobbyController
+  (Login) .> (Register) : extends
+  (JoinGame) .> (CreateGame) : extends
+  (ChooseCardPack) .> (Buy/SellCardDesk) : include
+   (MakeMove) .> (OtoPlay) : include
+}
+@enduml
+
+
+
+
+@enduml
+
+
